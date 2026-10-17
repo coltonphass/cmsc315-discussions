@@ -66,8 +66,21 @@ class Animal:
 # Replace the pass statement with your implementation.
 
 class Penguin(Animal):
-    pass
+    habitat_name = "Igloo"
 
+    def __init__(self, name, species, age, diet, swim_speed, is_molting):
+
+        super().__init__(name, species, age, diet)
+
+        self.swim_speed = swim_speed
+        self.is_molting = is_molting
+
+    def swim(self):
+        return self.name, "swims at a swim speed of: ", self.swim_speed
+
+    #@override
+    def make_sound(self):
+        return "squawk"
 
 # TODO 3:
 # Create a function that demonstrates class namespaces and instance namespaces.
@@ -132,6 +145,13 @@ def main():
         print("Feeding blocked: ", error)
 
     print("Total animals", Animal.total_animals)
+
+
+    waddles = Penguin("Waddles", "Penguin", 5, ["Fish"], 2.5, True)
+    print(waddles)
+
+    print(waddles.get_info())
+    print(waddles.swim())
 
 if __name__ == "__main__":
     main()
