@@ -24,10 +24,35 @@ from copy import copy, deepcopy
 #
 # Replace the pass statement with your implementation.
 
-class ParentClass:
-    pass
+class Animal:
+    zoo_name = "Plumpton Park"
+    total_animals = 0
+
+    # maybe add type hinting so the input remains clear?
+    def __init__(self, name, species, age, diet, health=100):
+        self.name = name
+        self.species = species
+        self.age = age
+        self._health = health
+        self.diet = diet
+        self.feeding_log = []
+        Animal.total_animals += 1
+
+    def make_sound(self):
+        return "..."
+
+    def feed(self, food):
+        if food not in self.diet:
+            raise ValueError(self.name + " can't eat " + str(food) + ". Allowed: " + str(self.diet))
+            self.feeding_log.append(food)
+            return self.name + " ate " + str(food) + "."
 
 
+    def get_info(self):
+        return (self.name + " the " + self.species + ", age " + str(self.age) +
+                " | health: " + str(self._health) +
+                " | fed: " + str(self.feeding_log) +
+                " | zoo: " + self.zoo_name)
 # TODO 2:
 # Create a child class that inherits from the parent class.
 #
@@ -40,7 +65,7 @@ class ParentClass:
 #
 # Replace the pass statement with your implementation.
 
-class ChildClass(ParentClass):
+class Penguin(Animal):
     pass
 
 
@@ -96,6 +121,17 @@ def main():
     demonstrate_namespaces()
     demonstrate_copying()
 
+    peter = Animal("Peter", "Dog", 5, ["Kibble", "Steak"])
+    print(peter)
+
+    print(peter.get_info())
+
+    try:
+        peter.feed("pizza")
+    except ValueError as error:
+        print("Feeding blocked: ", error)
+
+    print("Total animals", Animal.total_animals)
 
 if __name__ == "__main__":
     main()
