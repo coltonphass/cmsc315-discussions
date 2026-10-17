@@ -44,8 +44,8 @@ class Animal:
     def feed(self, food):
         if food not in self.diet:
             raise ValueError(self.name + " can't eat " + str(food) + ". Allowed: " + str(self.diet))
-            self.feeding_log.append(food)
-            return self.name + " ate " + str(food) + "."
+        self.feeding_log.append(food)
+        return self.name + " ate " + str(food) + "."
 
 
     def get_info(self):
@@ -123,7 +123,7 @@ def main():
 
     peter = Animal("Peter", "Dog", 5, ["Kibble", "Steak"])
     print(peter)
-
+    peter.feed("Kibble")
     print(peter.get_info())
 
     try:
