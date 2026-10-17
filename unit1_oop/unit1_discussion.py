@@ -97,6 +97,23 @@ def demonstrate_namespaces():
     print("\n=== Namespace Demonstration ===")
     print("TODO: Implement namespace demonstration")
 
+    waddles = Penguin("Waddles", "Penguin", 5, ["Fish"], 2.5, True)
+    theodore = Penguin("Theodore", "Penguin", 7, ["Fish"], 3.5, False)
+
+    print(Penguin.habitat_name)
+    print(waddles.habitat_name)
+
+    waddles.habitat_name = "Pool"
+
+    waddles.favorite_keeper = "Colton"
+    print(waddles.favorite_keeper)
+
+    #print(theodore.favorite_keeper) - Will throw attribute error, as it should.
+
+    print(waddles.__dict__)
+    print(theodore.__dict__)
+    print(Penguin.__dict__)
+
 
 # TODO 4:
 # Create a function that demonstrates shallow copying and deep copying.
