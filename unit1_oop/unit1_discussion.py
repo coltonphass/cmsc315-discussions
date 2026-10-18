@@ -95,18 +95,23 @@ class Penguin(Animal):
 
 def demonstrate_namespaces():
     print("\n=== Namespace Demonstration ===")
-    print("TODO: Implement namespace demonstration")
 
     waddles = Penguin("Waddles", "Penguin", 5, ["Fish"], 2.5, True)
     theodore = Penguin("Theodore", "Penguin", 7, ["Fish"], 3.5, False)
 
-    print(Penguin.habitat_name)
-    print(waddles.habitat_name)
+    print("Penguin Class habitat:", Penguin.habitat_name)
+    print("Waddles habitat:", waddles.habitat_name)
 
     waddles.habitat_name = "Pool"
 
     waddles.favorite_keeper = "Colton"
-    print(waddles.favorite_keeper)
+
+    print("Waddles favorite keeper is:", waddles.favorite_keeper)
+
+    try:
+        print("Thedores favorite keeper is:", theodore.favorite_kepper)
+    except AttributeError as error:
+        print("Here we can see theodore does not have a favorite keeper:", error)
 
     #print(theodore.favorite_keeper) - Will throw attribute error, as it should.
 
@@ -128,8 +133,30 @@ def demonstrate_namespaces():
 
 def demonstrate_copying():
     print("\n=== Copy Demonstration ===")
-    print("TODO: Implement shallow copy and deep copy demonstration")
 
+    # create penguin and feed it once
+
+    isaac = Penguin("Isaac", "Penguin", 10, ["Fish", "Shrimp"], 6.5, False)
+    isaac.feed("Shrimp")
+
+    # make a shallow and deep copy with store variable names
+    shallow_copy = copy(isaac)
+    deep_copy = deepcopy(isaac)
+
+    print("Before changing the original:")
+    print("  Original log:    ", isaac.feeding_log)
+    print("  Shallow copy log:", shallow_copy.feeding_log)
+    print("  Deep copy log:   ", deep_copy.feeding_log)
+
+    isaac.feed("Fish")
+
+    print("\nAfter feeding the original again:")
+    print("  Original log:    ", isaac.feeding_log)
+    print("  Shallow copy log:", shallow_copy.feeding_log)
+    print("  Deep copy log:   ", deep_copy.feeding_log)
+
+    print("\nShallow copy shares Isaac's list:", isaac.feeding_log is shallow_copy.feeding_log)
+    print("Deep copy shares Isaac's list:   ", isaac.feeding_log is deep_copy.feeding_log)
 
 # TODO 5:
 # Complete the main function.
@@ -143,10 +170,6 @@ def demonstrate_copying():
 
 def main():
     print("=== Unit 1 OOP Assignment ===")
-
-    print("\nTODO: Create and test your parent object")
-
-    print("\nTODO: Create and test your child object")
 
     demonstrate_namespaces()
     demonstrate_copying()
