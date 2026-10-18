@@ -136,7 +136,7 @@ def demonstrate_namespaces():
 
     # Theodore never got this attribute, so looking it up raises an AttributeError
     try:
-        print("Thedore favorite keeper is:", theodore.favorite_kepper)
+        print("Theodore's favorite keeper is:", theodore.favorite_keeper)
     except AttributeError as error:
         print("Here we can see theodore does not have a favorite keeper:", error)
 
@@ -226,7 +226,7 @@ def main():
     waddles = Penguin("Waddles", "Pygoscelis papua", 5, ["Fish"], 2.5, True)
 
     print("\n--- Parent and child objects ---")
-    # __str__ lets print() show a readable summary
+    # show a readable summary
     print("Peter:", peter.get_info())
     # get_info() is only defined in Animal; Waddles inherits it
     print("Waddles (inherited get_info):", waddles.get_info())
